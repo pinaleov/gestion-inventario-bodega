@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión Inventario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="estilos.css">
+
+</head>
+<body>
+    <header class="container-fluid p-5 bg-primary text-white text-center">
+        <h1>Gestión Inventario</h1>
+    </header>
+    <main class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-5">
+                <form class="card">
+                    <div class="card-header text-center">
+                        <h5>Ingreso Inventario</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-2">
+                            <label class="col-2 text-end">Código</label>
+                            <div class="col-10">
+                                <input type="text" id="codigo" name="codigo" class="form-control" onblur="verificar(this.id)">
+                                <div id="e-codigo"></div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col-2 text-end">Nombre</label>
+                            <div class="col-10">
+                                <input type="text" id="nombre" name="nombre" class="form-control" onblur="verificar(this.id)">
+                                <div id="e-nombre"></div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col-2 text-end">Categoría</label>
+                            <div class="col-10">
+                                <select id="categoria" name="categoria" class="form-control" onblur="verificar(this.id)">
+                                    <option value="">Seleccione</option>
+                                    <option value="no_perecible">No perecible</option>
+                                    <option value="no_alimentario">No alimentario</option>
+                                    <option value="verduras">Verduras</option>
+                                    <option value="congelados">Congelados</option>
+                                </select>
+                                <div id="e-categoria"></div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col-2 text-end">Cantidad</label>
+                            <div class="col-10">
+                                <input type="number" id="cantidad" name="cantidad" class="form-control" onblur="verificar(this.id)">
+                                <div id="e-cantidad"></div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col-2 text-end">Fecha Ingreso</label>
+                            <div class="col-10">
+                                <input type="date" id="fecha" name="fecha" class="form-control" onblur="verificar(this.id)">
+                                <div id="e-fecha"></div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col-2 text-end">Proveedor</label>
+                            <div class="col-10">
+                                <input type="text" id="proveedor" name="proveedor" class="form-control" onblur="verificar(this.id)">
+                                <div id="e-proveedor"></div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col-2 text-end">Precio</label>
+                            <div class="col-10">
+                                <input type="number" id="precio" name="precio" class="form-control" onblur="verificar(this.id)">
+                                <div id="e-precio"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <input type="button" onclick="limpiar()" value="Limpiar" class="btn btn-info w-25">
+                        <input type="button" id="btnSave" value="Guardar" class="btn btn-success w-25">
+                    </div>
+                </form>
+            </div>
+            <div class="col-7">
+                <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th>Código</th>
+                            <th>Nombre</th>
+                            <th>Categoría</th>
+                            <th>Cantidad</th>
+                            <th>Fecha Ingreso</th>
+                            <th>Proveedor</th>
+                            <th>Precio</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="contenido"></tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="helper.js"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyD-uQycHMcWq815Q8I3WyTR9kYBUs8hyuY",
+          authDomain: "certamen-86732.firebaseapp.com",
+          projectId: "certamen-86732",
+          storageBucket: "certamen-86732.appspot.com",
+          messagingSenderId: "1088584934404",
+          appId: "1:1088584934404:web:3c34f8793503f361b70151",
+          measurementId: "G-849R304E7C"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+    <script src="funciones.js" type="module"></script>
+</body>
+</html>
+
+
+
+
